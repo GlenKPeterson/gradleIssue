@@ -1,14 +1,15 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
-val versionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
-println("Library aliases: ${versionCatalog.libraryAliases}")
+//val versionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
+//println("Library aliases: ${versionCatalog.libraryAliases}")
 
 plugins {
     `java-library`
 
-    alias(libs.m.versions)
-    alias(libs.kotlin.dokka)
-    alias(libs.kotlin.jvm)
+    @Suppress("DSL_SCOPE_VIOLATION")
+    alias(libs.plugins.m.versions)
+    @Suppress("DSL_SCOPE_VIOLATION")
+    alias(libs.plugins.dokka)
+    @Suppress("DSL_SCOPE_VIOLATION")
+    alias(libs.plugins.kotlin.jvm)
 }
 
 repositories {

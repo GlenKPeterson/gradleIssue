@@ -34,3 +34,37 @@ Script compilation errors:
 3 errors
 ...
 ```
+
+## Fixed!
+
+Thanks to the [Gradle Community Slack](https://discuss.gradle.org/t/introducing-gradle-community-slack/26731)
+for the solution!
+
+### Vampire  29 minutes ago
+Not sure how your MCVE is related to your question. The error you show in the readme is because you didn't do `libs.plugins.dokka` and so on, but `libs.kotlin.dokka`.
+
+🙌🏻 1  🎉 1 🙏🏻 1
+
+
+### Chris Lee  27 minutes ago
+Yes.  Correcting the plugins block to the below allows the project to be successfully executed.
+```
+plugins {
+`java-library`
+
+    alias(libs.plugins.m.versions)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlin.jvm)
+}
+```
+🎉 1  🙌🏻 1  🙏🏻 1
+
+
+### Glen Peterson  3 minutes ago
+```
+@Suppress("DSL_SCOPE_VIOLATION")
+alias(libs.plugins.m.versions)
+```
+Seems to suppress the IDE error.
+
+👍 1
